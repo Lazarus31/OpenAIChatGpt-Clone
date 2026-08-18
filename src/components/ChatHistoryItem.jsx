@@ -1,6 +1,6 @@
 function ChatHistoryItem({ chatTitle, setSelectedChat }) {
   return chatTitle.map((chat) => (
-    <p key={chat.id} onClick={() => setSelectedChat(chat)}>
+    <p className="Recents-input" key={chat.id} onClick={() => setSelectedChat(chat)}>
       {chat.title}
     </p>
   ));
