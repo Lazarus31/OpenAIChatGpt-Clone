@@ -1,7 +1,7 @@
-function ChatMessage({ chatUi, selectedChat }) {
+function ChatMessage({ message, selectedChat }) {
   const activeChat =
     selectedChat &&
-    chatUi.find((chat) => chat.conversation_id === selectedChat.id);
+    message?.find((chat) => chat.conversation_id === selectedChat.id);
   if (activeChat) {
     const messages = Object.values(activeChat.mapping);
     return (
