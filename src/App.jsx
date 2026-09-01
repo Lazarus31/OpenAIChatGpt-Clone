@@ -6,11 +6,13 @@ function App() {
   const [selectedChat, setSelectedChat] = useState(null);
   const [history, setHistory] = useState([]);
   const [message, setMessage] = useState(null);
-
-  useEffect(() => {
-    fetch("http://localhost:1080/conversations")
+  const fetchData = async () => {
+    await fetch("http://localhost:1080/conversations")
       .then((res) => res.json())
       .then((data) => setHistory(data));
+  };
+  useEffect(() => {
+    fetchData();
   }, []);
   // useEffect(() => {
   //   if (!selectedChat) return;
@@ -64,6 +66,7 @@ function App() {
         handleChats={handleChats}
       />
       <ChatArea
+        fetchData={fetchData}
         message={message}
         selectedChat={selectedChat}
         handleSubmit={handleSubmit}
