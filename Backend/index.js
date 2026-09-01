@@ -1,9 +1,9 @@
 const express = require("express");
 const cors = require("cors");
+const { randomUUID } = require("crypto");
 const app = express();
 app.use(cors());
 app.use(express.json());
-
 let ConversationTitle = {
   items: [
     {
@@ -1021,10 +1021,8 @@ let chatHistory = [
 ];
 
 app.get("/", (req, res) => {
-  {
-    console.log("IT WORKS");
-    res.send("IT WORKS");
-  }
+  console.log("IT WORKS");
+  res.send("IT WORKS");
 });
 
 app.get("/conversations", (req, res) => {
@@ -1035,6 +1033,17 @@ app.get("/conversations/:id", (req, res) => {
   const convo_id = req.params.id;
   const convo = chatHistory?.find((chat) => chat.conversation_id === convo_id);
   res.json(convo);
+});
+app.post("/conversation", (req, res) => {
+  const chatId = randomUUID();
+  const addTitle = {
+    id: chatId,
+    title: req.body.message,
+  };
+
+  ConversationTitle.items.unshift(addTitle);
+  console.log("ers", ConversationTitle);
+  res.json();
 });
 
 app.listen(1080, () => {
