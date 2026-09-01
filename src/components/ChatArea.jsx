@@ -5,10 +5,24 @@ import {
   MicrophoneIcon,
 } from "@phosphor-icons/react";
 import ChatMessage from "./ChatMessage";
-function ChatArea({ message, selectedChat, handleSubmit }) {
+function ChatArea({ message, selectedChat, handleSubmit, fetchData }) {
   console.log("see", message);
   const [text, setText] = useState("");
 
+  const handleSend = async () => {
+    const response = await fetch("http://localhost:1080/conversation", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        message: text,
+      }),
+    });
+    response.json();
+    console.log(response);
+    await fetchData();
+  };
   return (
     <div className="chatArea">
       <div className="chatArea-1">
@@ -35,7 +49,7 @@ function ChatArea({ message, selectedChat, handleSubmit }) {
           <button
             className="addButton"
             onClick={() => {
-              handleSubmit(text);
+              handleSend();
             }}
           >
             <ArrowUpIcon size={32} />
