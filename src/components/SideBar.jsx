@@ -2,7 +2,7 @@ import { useState } from "react";
 import { MagnifyingGlassIcon } from "@phosphor-icons/react";
 import ChatHistoryItem from "./ChatHistoryItem";
 
-function SideBar({ setSelectedChat, history }) {
+function SideBar({ setSelectedChat, history, handleDelete, handleChats }) {
   const [showSearch, setShowSearch] = useState(false);
   const [searchText, setSearchText] = useState("");
 
@@ -66,7 +66,8 @@ function SideBar({ setSelectedChat, history }) {
         <ChatHistoryItem
           chatTitle={filteredChats}
           setSelectedChat={setSelectedChat}
-          history={history}
+          handleDelete={handleDelete}
+          handleChats={handleChats}
         />
       </div>
 

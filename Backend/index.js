@@ -1,4 +1,10 @@
-const ConversationTitle = {
+const express = require("express");
+const cors = require("cors");
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+let ConversationTitle = {
   items: [
     {
       id: "6a8223f4-6acc-83ea-a932-a6dafd68acf7",
@@ -537,8 +543,7 @@ const ConversationTitle = {
   limit: 28,
   offset: 0,
 };
-
-const chatHistory = [
+let chatHistory = [
   {
     title: "Greeting Exchange",
     create_time: 1786913788.357758,
@@ -1014,4 +1019,24 @@ const chatHistory = [
     context_truncation_continuation: null,
   },
 ];
-export { ConversationTitle, chatHistory };
+
+app.get("/", (req, res) => {
+  {
+    console.log("IT WORKS");
+    res.send("IT WORKS");
+  }
+});
+
+app.get("/conversations", (req, res) => {
+  res.json(ConversationTitle.items);
+});
+
+app.get("/conversations/:id", (req, res) => {
+  const convo_id = req.params.id;
+  const convo = chatHistory?.find((chat) => chat.conversation_id === convo_id);
+  res.json(convo);
+});
+
+app.listen(1080, () => {
+  console.log("Server running on http://localhost:1080");
+});

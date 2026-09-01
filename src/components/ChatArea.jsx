@@ -5,12 +5,9 @@ import {
   MicrophoneIcon,
 } from "@phosphor-icons/react";
 import ChatMessage from "./ChatMessage";
-function ChatArea({ message, selectedChat,handleSubmit }) {
+function ChatArea({ message, selectedChat, handleSubmit }) {
   console.log("see", message);
   const [text, setText] = useState("");
-
-
-  
 
   return (
     <div className="chatArea">

@@ -1,13 +1,15 @@
 function ChatMessage({ message, selectedChat }) {
-  const activeChat =
-    selectedChat &&
-    message?.find((chat) => chat.conversation_id === selectedChat.id);
-  if (activeChat) {
-    const messages = Object.values(activeChat.mapping);
+  // const activeChat =
+  //   selectedChat &&
+  //   message?.find((chat) => chat.conversation_id === selectedChat.id);
+  console.log("Data", message);
+
+  if (selectedChat && message && message.mapping) {
+    const messages = Object?.values(message?.mapping);
     return (
       <div>
-        {messages.map((item) => (
-          <div className="chats-output">
+        {messages?.map((item) => (
+          <div key={item?.id} className="chats-output">
             {/* {item.message &&
               item.message.content &&
               item.message.content.parts &&
