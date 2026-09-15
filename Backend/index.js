@@ -1040,8 +1040,24 @@ app.post("/conversation", (req, res) => {
     id: chatId,
     title: req.body.message,
   };
-
+  const addChat = {
+    title: req.body.message,
+    conversation_id: chatId,
+    mapping: {
+      chatId: {
+        id: chatId,
+        message: {
+          id: chatId,
+          content: {
+            content_type: "text",
+            parts: [req.body.message],
+          },
+        },
+      },
+    },
+  };
   ConversationTitle.items.unshift(addTitle);
+  chatHistory.unshift(addChat);
   console.log("ers", ConversationTitle);
   res.json();
 });
