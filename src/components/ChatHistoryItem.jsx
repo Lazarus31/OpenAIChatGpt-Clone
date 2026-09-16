@@ -1,11 +1,18 @@
-import { useState } from "react";
+// import { useState } from "react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
+import { DotsThreeOutlineIcon } from "@phosphor-icons/react";
 function ChatHistoryItem({
   setSelectedChat,
   chatTitle,
   handleDelete,
   handleChats,
 }) {
-  const [showdot, setShowdot] = useState(false);
+  // const [showdot, setShowdot] = useState(false);
 
   return (
     <div>
@@ -19,7 +26,7 @@ function ChatHistoryItem({
           }}
         >
           {chat.title}
-          <button
+          {/* <button
             onClick={(e) => {
               e.stopPropagation();
               setShowdot(!showdot);
@@ -32,7 +39,20 @@ function ChatHistoryItem({
               <button onClick={() => handleDelete(chat.id)}>delete</button>
               <button>Rename</button>
             </div>
-          )}
+          )} */}
+          <DropdownMenu>
+            <DropdownMenuTrigger onClick={(e) => e.stopPropagation()}>
+              <DotsThreeOutlineIcon size={20} weight="bold" />
+            </DropdownMenuTrigger>
+
+            <DropdownMenuContent>
+              <DropdownMenuItem onClick={() => handleDelete(chat.id)}>
+                Delete
+              </DropdownMenuItem>
+
+              <DropdownMenuItem>Rename</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       ))}
     </div>
