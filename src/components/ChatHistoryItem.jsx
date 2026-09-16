@@ -46,6 +46,7 @@ function ChatHistoryItem({
             </DropdownMenuTrigger>
 
             <DropdownMenuContent>
+              <DropdownMenuItem>Pin</DropdownMenuItem>
               <DropdownMenuItem onClick={() => handleDelete(chat.id)}>
                 Delete
               </DropdownMenuItem>
