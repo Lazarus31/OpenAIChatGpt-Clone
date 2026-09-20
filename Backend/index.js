@@ -1061,7 +1061,11 @@ app.post("/conversation", (req, res) => {
   console.log("ers", ConversationTitle);
   res.json();
 });
-
+app.post("/chat", (req, res) => {
+  const chats = req.body;
+  console.log("new api", chats);
+  res.json();
+});
 app.listen(1080, () => {
   console.log("Server running on http://localhost:1080");
 });
