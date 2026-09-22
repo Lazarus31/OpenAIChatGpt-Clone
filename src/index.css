@@ -349,3 +349,54 @@ body {
   background-color: #333;
   border-radius: 10px;
 }
+/* ================= CHAT MESSAGES ================= */
+
+.chats-output {
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 8px 20px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* ================= USER MESSAGE ================= */
+
+.user-message {
+  align-self: flex-end;
+
+  max-width: 70%;
+  padding: 10px 16px;
+
+  background-color: #2f2f2f;
+  color: #ffffff;
+
+  border-radius: 18px;
+
+  font-size: 15px;
+  line-height: 1.5;
+
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* ================= ASSISTANT MESSAGE ================= */
+
+.assistant-message {
+  align-self: flex-start;
+
+  max-width: 75%;
+  padding: 10px 16px;
+
+  background-color: #181818;
+  color: #eeeeee;
+
+  border-radius: 12px;
+
+  font-size: 15px;
+  line-height: 1.6;
+
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
