@@ -79,7 +79,8 @@ function App() {
         message={message}
         setMessage={setMessage}
         selectedChat={selectedChat}
-        handleSubmit={handleSubmit}
+        setSelectedChat={setSelectedChat}
+        handleChats={handleChats}
       />
     </div>
   );
