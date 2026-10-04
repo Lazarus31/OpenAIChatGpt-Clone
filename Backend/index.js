@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const { default: ollama } = require("ollama");
 const { randomUUID } = require("crypto");
 const app = express();
 app.use(cors());
