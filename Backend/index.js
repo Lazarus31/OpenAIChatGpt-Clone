@@ -1020,7 +1020,15 @@ let chatHistory = [
     context_truncation_continuation: null,
   },
 ];
-
+const newShort = chatHistory.map((chat) =>
+  Object.values(chat.mapping).map((item) => ({
+    id: item?.id,
+    conversation_id: chat.conversation_id,
+    title: chat.title,
+    role: item?.message?.author?.role,
+    text: item?.message?.content?.parts?.[0],
+  })),
+);
 app.get("/", (req, res) => {
   console.log("IT WORKS");
   res.send("IT WORKS");
