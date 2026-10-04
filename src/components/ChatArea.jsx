@@ -24,11 +24,25 @@ function ChatArea({
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        message: text,
+        model: "llama3.2:3b",
+        conversation_id: selectedChat?.id,
+        messages: [
+          ...message.map((chat) => ({
+            role: chat.role,
+            content: chat.text,
+          })),
+          {
+            role: "user",
+            content: text,
+          },
+        ],
       }),
-    });
-    response.json();
-    console.log(response);
+    }).then((res) =>
+      res.json().then(async (data) => {
+        console.log("khklhklhl", data);
+        return data;
+      }),
+    );
     await fetchData();
   };
   return (
