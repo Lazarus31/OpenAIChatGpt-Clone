@@ -5,11 +5,17 @@ import { ConversationTitle, chatHistory } from "./data/chatHistory.jsx";
 function App() {
   const [selectedChat, setSelectedChat] = useState(null);
   const [history, setHistory] = useState([]);
-  const [message, setMessage] = useState(null);
+  const [message, setMessage] = useState([]);
   const fetchData = async () => {
-    await fetch("http://localhost:1080/conversations")
-      .then((res) => res.json())
-      .then((data) => setHistory(data));
+    try {
+      const res = await fetch("http://localhost:1080/conversations");
+      const data = await res.json();
+
+      setHistory(data);
+    } catch (error) {
+      console.error("Error fetching conversations:", error);
+      setHistory([]);
+    }
   };
   useEffect(() => {
     fetchData();
