@@ -41,17 +41,43 @@ function App() {
     const deleting = history.filter((chat) => chat.id !== id);
     setHistory(deleting);
   };
+  const handlePin = (id) => {
+    const pinChat = history.map((chat) => {
+      if (chat.id === id) {
+        return {
+          ...chat,
+          pinned: true,
+        };
+      }
+      return chat;
+    });
+    pinChat.sort((a, b) => {
+      if (a.pinned && !b.pinned) return -1;
+      if (!a.pinned && b.pinned) return 1;
+      return 0;
+    });
+    console.log("pin", pinChat);
+    setHistory(pinChat);
+  };
+  const handleNewChat = () => {
+    setSelectedChat(null);
+    setMessage([]);
+  };
   return (
     <div className="chatGPT-UI">
       <SideBar
         setSelectedChat={setSelectedChat}
+        setMessage={setMessage}
         history={history}
         handleDelete={handleDelete}
         handleChats={handleChats}
+        handlePin={handlePin}
+        handleNewChat={handleNewChat}
       />
       <ChatArea
         fetchData={fetchData}
         message={message}
+        setMessage={setMessage}
         selectedChat={selectedChat}
         handleSubmit={handleSubmit}
       />
