@@ -18,7 +18,7 @@ function ChatArea({
   const [text, setText] = useState("");
 
   const handleSend = async () => {
-    const response = await fetch("http://localhost:1080/conversation", {
+    const chatd = await fetch("http://localhost:1080/chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
