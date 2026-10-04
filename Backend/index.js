@@ -1062,13 +1062,17 @@ app.post("/chat", async (req, res) => {
     const addChat = [
       {
         id: chatId,
-        message: {
-          id: chatId,
-          content: {
-            content_type: "text",
-            parts: [req.body.message],
-          },
-        },
+        conversation_id: chatId,
+        title: userMessage,
+        role: "user",
+        text: userMessage,
+      },
+      {
+        id: randomUUID(),
+        conversation_id: chatId,
+        title: userMessage,
+        role: "assistant",
+        text: aiResponse.message.content,
       },
     },
   };
