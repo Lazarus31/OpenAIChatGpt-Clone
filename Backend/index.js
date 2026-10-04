@@ -1037,10 +1037,13 @@ app.get("/", (req, res) => {
 app.get("/conversations", (req, res) => {
   res.json(ConversationTitle.items);
 });
-
+console.log("new", newShort);
 app.get("/conversations/:id", (req, res) => {
   const convo_id = req.params.id;
-  const convo = chatHistory?.find((chat) => chat.conversation_id === convo_id);
+  const convo = newShort.find((chat) =>
+    chat.find((item) => item.conversation_id === convo_id),
+  );
+
   res.json(convo);
 });
 app.post("/conversation", (req, res) => {
