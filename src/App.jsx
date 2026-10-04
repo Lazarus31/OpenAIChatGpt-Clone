@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import ChatArea from "./components/ChatArea.jsx";
 import SideBar from "./components/SideBar.jsx";
-import { ConversationTitle, chatHistory } from "./data/chatHistory.jsx";
 function App() {
   const [selectedChat, setSelectedChat] = useState(null);
   const [history, setHistory] = useState([]);
@@ -20,13 +19,6 @@ function App() {
   useEffect(() => {
     fetchData();
   }, []);
-  // useEffect(() => {
-  //   if (!selectedChat) return;
-  //   fetch(`http://localhost:1080/conversations/${selectedChat.id}`)
-  //     .then((res) => res.json())
-  //     .then((data) => setMessage(data));
-  // }, [selectedChat]);
-
   const handleChats = (e) => {
     fetch(`http://localhost:1080/conversations/${e.id}`)
       .then((res) => res.json())
