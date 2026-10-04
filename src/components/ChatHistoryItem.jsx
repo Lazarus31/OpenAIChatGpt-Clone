@@ -11,9 +11,8 @@ function ChatHistoryItem({
   chatTitle,
   handleDelete,
   handleChats,
+  handlePin,
 }) {
-  // const [showdot, setShowdot] = useState(false);
-
   return (
     <div>
       {chatTitle.map((chat) => (
@@ -26,27 +25,16 @@ function ChatHistoryItem({
           }}
         >
           {chat.title}
-          {/* <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setShowdot(!showdot);
-            }}
-          >
-            :
-          </button>
-          {showdot && (
-            <div>
-              <button onClick={() => handleDelete(chat.id)}>delete</button>
-              <button>Rename</button>
-            </div>
-          )} */}
+
           <DropdownMenu>
             <DropdownMenuTrigger onClick={(e) => e.stopPropagation()}>
               <DotsThreeOutlineIcon size={20} weight="bold" />
             </DropdownMenuTrigger>
 
             <DropdownMenuContent>
-              <DropdownMenuItem>Pin</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handlePin(chat.id)}>
+                Pin
+              </DropdownMenuItem>
               <DropdownMenuItem onClick={() => handleDelete(chat.id)}>
                 Delete
               </DropdownMenuItem>
