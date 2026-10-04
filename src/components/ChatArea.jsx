@@ -44,6 +44,14 @@ function ChatArea({
       }),
     );
     await fetchData();
+    setSelectedChat({
+      id: chatd.id,
+      title: text,
+      // text: chatd.message.content,
+    });
+    await handleChats(chatd);
+
+    console.log("nowqw", chatd);
   };
   return (
     <div className="chatArea">
