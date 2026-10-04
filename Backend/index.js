@@ -1046,17 +1046,21 @@ app.get("/conversations/:id", (req, res) => {
 
   res.json(convo);
 });
-app.post("/conversation", (req, res) => {
-  const chatId = randomUUID();
-  const addTitle = {
-    id: chatId,
-    title: req.body.message,
-  };
-  const addChat = {
-    title: req.body.message,
-    conversation_id: chatId,
-    mapping: {
-      chatId: {
+
+app.post("/chat", async (req, res) => {
+  try {
+    const aiResponse = await ollama.chat(req.body);
+    const chatId = req.body.conversation_id || randomUUID();
+    const userMessage =
+      req.body.messages?.[req.body.messages.length - 1]?.content || "New Chat";
+
+    const addTitle = {
+      id: chatId,
+      title: userMessage,
+    };
+
+    const addChat = [
+      {
         id: chatId,
         message: {
           id: chatId,
