@@ -43,7 +43,7 @@ function SideBar({
 
       <div className="gptPanel">
         <div className="gptButtons" id="sicky-1">
-          <p>New Chat</p>
+          <p onClick={handleNewChat}>New Chat</p>
         </div>
 
         <div className="gptButtons">
@@ -75,6 +75,7 @@ function SideBar({
           setSelectedChat={setSelectedChat}
           handleDelete={handleDelete}
           handleChats={handleChats}
+          handlePin={handlePin}
         />
       </div>
 
