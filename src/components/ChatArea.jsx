@@ -53,6 +53,7 @@ function ChatArea({
 
     console.log("nowqw", chatd);
   };
+
   return (
     <div className="chatArea">
       <div className="chatArea-1">
@@ -80,6 +81,7 @@ function ChatArea({
             className="addButton"
             onClick={() => {
               handleSend();
+              setText("");
             }}
           >
             <ArrowUpIcon size={32} />
