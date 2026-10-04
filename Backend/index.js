@@ -1074,18 +1074,21 @@ app.post("/chat", async (req, res) => {
         role: "assistant",
         text: aiResponse.message.content,
       },
-    },
-  };
-  ConversationTitle.items.unshift(addTitle);
-  chatHistory.unshift(addChat);
-  console.log("ers", ConversationTitle);
-  res.json();
+    ];
+
+    // Add to sidebar conversation titles
+    ConversationTitle.items.unshift(addTitle);
+    newShort.unshift(addChat);
+
+    res.json({ ...aiResponse, id: chatId });
+  } catch (error) {
+    res.status(500).json({
+      status: "Error",
+      error: error.message,
+    });
+  }
 });
-app.post("/chat", (req, res) => {
-  const chats = req.body;
-  console.log("new api", chats);
-  res.json();
-});
+
 app.listen(1080, () => {
   console.log("Server running on http://localhost:1080");
 });
