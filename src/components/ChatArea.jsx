@@ -83,6 +83,12 @@ function ChatArea({
               handleSend();
               setText("");
             }}
+            onKeyDown={(d) => {
+              if (d.key === "Enter") {
+                handleSend();
+                setText("");
+              }
+            }}
           >
             <ArrowUpIcon size={32} />
           </button>
