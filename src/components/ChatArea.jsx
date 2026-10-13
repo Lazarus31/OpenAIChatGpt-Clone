@@ -5,6 +5,11 @@ import {
   MicrophoneIcon,
 } from "@phosphor-icons/react";
 import ChatMessage from "./ChatMessage";
+
+//  <DropdownMenuItem>Rename</DropdownMenuItem>
+//             </DropdownMenuContent>
+//           </DropdownMenu>
+        
 function ChatArea({
   message,
   selectedChat,
