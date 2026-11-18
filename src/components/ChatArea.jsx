@@ -9,7 +9,7 @@ import ChatMessage from "./ChatMessage";
 //  <DropdownMenuItem>Rename</DropdownMenuItem>
 //             </DropdownMenuContent>
 //           </DropdownMenu>
-        
+
 function ChatArea({
   message,
   selectedChat,
@@ -76,6 +76,10 @@ function ChatArea({
           <input
             value={text}
             onChange={(d) => setText(d.target.value)}
+            onKeyDown={(d) => {
+              if (d.key === "Enter") handleSend();
+              setText("");
+            }}
             className="typeInput"
             placeholder="Ask Anything"
           />
